@@ -22,8 +22,8 @@ A modern e-commerce application built with Next.js, NextAuth, Prisma, and Postgr
 1. Clone the repository:
 
 ```bash
-git clone https://your-repository-url.git
-cd e-commerce
+git clone git@github.com:nimithsan/next-oauth-template.git
+cd next-oauth-template
 ```
 
 2. Install dependencies:

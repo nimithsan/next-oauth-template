@@ -2,6 +2,8 @@
 
 A modern e-commerce application built with Next.js, NextAuth, Prisma, and PostgreSQL.
 
+![Application Preview](./preview/preview.png)
+
 ## Features
 
 - User authentication with email/password

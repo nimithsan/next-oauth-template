@@ -1,4 +1,4 @@
-# E-Commerce Application
+# Very Simple Oauth Practice Application
 
 A modern e-commerce application built with Next.js, NextAuth, Prisma, and PostgreSQL.
 

@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce Application
+
+A modern e-commerce application built with Next.js, NextAuth, Prisma, and PostgreSQL.
+
+## Features
+
+- User authentication with email/password
+- Social login with Google and Facebook
+- Secure password hashing with bcrypt
+- User registration and profile management
+- PostgreSQL database integration with Prisma ORM
+- Responsive design with Tailwind CSS
+
+## Prerequisites
+
+- [Bun](https://bun.sh/) installed
+- PostgreSQL database server running
+- Google and Facebook OAuth credentials (for social login)
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+git clone https://your-repository-url.git
+cd e-commerce
+```
+
+2. Install dependencies:
+
+```bash
+bun install
+```
+
+3. Set up your environment variables:
+
+Create a `.env` file in the root directory with the following variables:
+
+```
+# Prisma
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/ecommerce?schema=public"
+
+# NextAuth
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key"
+
+# OAuth
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret"
+FACEBOOK_CLIENT_ID="your-facebook-client-id"
+FACEBOOK_CLIENT_SECRET="your-facebook-client-secret"
+```
+
+4. Set up the database:
+
+```bash
+bunx prisma migrate dev
+```
+
+5. Run the development server:
+
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/app` - Next.js application code
+  - `/api` - API routes, including NextAuth
+  - `/components` - Reusable UI components
+  - `/dashboard` - Protected dashboard page
+  - `/services` - Service layer (auth services, etc.)
+  - `/lib` - Utility functions and shared code
+  - `/types` - TypeScript type definitions
+- `/prisma` - Prisma schema and migrations
+- `/public` - Static assets
 
-## Learn More
+## Authentication Flow
 
-To learn more about Next.js, take a look at the following resources:
+1. **Regular Login**: Users can log in with their email and password
+2. **Social Login**: Users can authenticate with Google or Facebook accounts
+3. **Registration**: New users can create an account with email, password, and name
+4. **Session Management**: Managed by NextAuth with JWT strategy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Database Schema
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The application uses the following database models:
 
-## Deploy on Vercel
+- `User`: User information (name, email, password, etc.)
+- `Account`: OAuth accounts connected to a user
+- `Session`: User sessions
+- `VerificationToken`: Email verification tokens
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This application can be deployed to various platforms such as Vercel, Netlify, or traditional hosting services. Make sure to set up your environment variables on your deployment platform.
+
+## License
+
+This project is licensed under the MIT License.
